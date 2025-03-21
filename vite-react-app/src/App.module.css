@@ -65,4 +65,12 @@ button:focus-visible {
 	font-size: 30px;
 	color: black;
 	background-color: #d5c2c2;
+	padding: 20px;
+	text-align: center;
+}
+.equally {
+	color: rgb(227, 241, 21);
+	border-color: black;
+	font-style: oblique;
+	font-size: 40px;
 }
