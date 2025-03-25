@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { data } from './data.js';
 import styles from './App.module.css';
-import { useEffect } from 'react';
 
 let NUMS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '=', 'C'];
 
@@ -10,6 +9,8 @@ function App() {
 	const [operand2, setOperand2] = useState('');
 	const [operator, setOperator] = useState('');
 	const [equally, setEqually] = useState(0);
+
+	let exp = 0;
 
 	console.log('operand1', operand1);
 	console.log('operand2', operand2);
@@ -40,8 +41,16 @@ function App() {
 	function equallyNumber() {
 		setEqually(1);
 	}
-
-	// let displayExpression = null
+	function fromStringToNumber() {
+		switch (operator) {
+			case '+':
+				exp = parseInt(operand1) + parseInt(operand2);
+				break;
+			case '-':
+				exp = parseInt(operand1) - parseInt(operand2);
+		}
+		return exp;
+	}
 
 	return (
 		<>
@@ -50,9 +59,7 @@ function App() {
 					equally ? `${styles.display} ${styles.equally}` : styles.display
 				}
 			>
-				{equally
-					? eval(`${operand1} ${operator} ${operand2}`)
-					: `${operand1} ${operator} ${operand2}`}
+				{equally ? fromStringToNumber() : `${operand1} ${operator} ${operand2}`}
 			</div>
 
 			<div>
